@@ -1,3 +1,4 @@
+import GUI.MainFrame;
 
 public class Home {
 	public static void main(String[] args) {
