@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="rootBox" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.TimeInputController">
+   <children>
+      <SplitPane fx:id="splitMain" dividerPositions="0.3612040133779264" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
+        <items>
+          <AnchorPane fx:id="anchorOne" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <DatePicker fx:id="datePicker" layoutX="303.0" layoutY="55.0" prefHeight="102.0" prefWidth="192.0" />
+                  <Label layoutX="342.0" layoutY="157.0" prefHeight="17.0" prefWidth="99.0" text="Datum auswählen" textAlignment="CENTER" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane fx:id="splitSecondary" dividerPositions="0.5055350553505535" layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="379.0" prefWidth="800.0">
+                    <items>
+                      <AnchorPane fx:id="anchorTwo" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextField fx:id="kommzeitTextField" layoutX="183.0" layoutY="69.0" />
+                              <TextField fx:id="gehzeitTextField" layoutX="431.0" layoutY="69.0" />
+                              <Label fx:id="formatKommzeitLabel" layoutX="212.0" layoutY="94.0" text="Stunden:Minuten" />
+                              <Label fx:id="kommzeitLabel" layoutX="231.0" layoutY="28.0" text="Kommzeit" />
+                              <Label fx:id="gehzeitLabel" layoutX="486.0" layoutY="28.0" text="Gehzeit" />
+                              <Label fx:id="formatGehzeitLabel" layoutX="460.0" layoutY="94.0" text="Stunden:Minuten" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane fx:id="anchorThree" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Button fx:id="eintragenButton" layoutX="82.0" layoutY="96.0" mnemonicParsing="false" text="Zeit eintragen" />
+                              <Button fx:id="abbruchButton" layoutX="622.0" layoutY="96.0" mnemonicParsing="false" text="abbrechen" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>
