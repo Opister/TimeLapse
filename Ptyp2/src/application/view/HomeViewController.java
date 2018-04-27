@@ -51,6 +51,14 @@ public class HomeViewController {
 		 */
 	}
 
+	public void eintraegeSehenButtonClicked(ActionEvent ev) throws IOException{
+		Parent entries = FXMLLoader.load(getClass().getResource("ViewEntriesView.fxml"));
+		MainViewController.redraw(entries);
+		/**
+		 * TODO Alles ausser fxml Verknuepfung
+		 */
+	}
+
 	public void ProtokollButtonClicked(ActionEvent ev) throws IOException{
 
 		/**
