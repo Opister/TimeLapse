@@ -36,7 +36,6 @@ public class MainViewController extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("TimeLapse");
 		mainStage = primaryStage;
-		home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
 		root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 		// Typsicherheit

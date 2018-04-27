@@ -26,10 +26,21 @@ public class HomeViewController {
 	@FXML
 	private Label offeneFehlLabel;
 
+	@FXML
+	private Button mitarbeiterBearButton;
+	@FXML
+	private Button zeitenBearButton;
+	@FXML
+	private Button abrechnungButton;
+
+
 	@SuppressWarnings("unused")
 	public void timeInuputButtonClicked(ActionEvent ev) throws IOException {
 		Parent tInView = FXMLLoader.load(getClass().getResource("TimeInputView.fxml"));
 		MainViewController.redraw(tInView);
+		/**
+		 * TODO Verarbeitung der Eintraege
+		 */
 	}
 
 	public void logoutButtonClicked(ActionEvent ev) throws IOException{
@@ -46,4 +57,19 @@ public class HomeViewController {
 		 * TODO Alles ausser fxml Verknuepfung
 		 */
 	}
+
+	public void mitarbeiterBearButtonClicked(ActionEvent ev) throws IOException {
+		/**
+		 * TODO Verarbeitung der Eintraege
+		 */
+	}
+
+	public void zeitenBearButtonClicked(ActionEvent ev) throws IOException{
+		// TODO
+	}
+
+	public void abrechnungErstellenButtonClicked(ActionEvent ev) throws IOException{
+		//TODO
+	}
+
 }
