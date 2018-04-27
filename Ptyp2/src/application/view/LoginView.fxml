@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<GridPane fx:id="gPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="application.view.LoginController">
+<GridPane fx:id="gPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.LoginController">
    <children>
-      <Button fx:id="login" mnemonicParsing="false" text="Login" GridPane.rowIndex="3" />
+      <Button fx:id="login" mnemonicParsing="false" onAction="#loginButtonClick" text="Login" GridPane.rowIndex="3" />
       <TextField fx:id="pw" GridPane.rowIndex="2" />
       <TextField fx:id="uname" />
       <Label fx:id="unamelabel" text="Benutzername" GridPane.columnIndex="1" />

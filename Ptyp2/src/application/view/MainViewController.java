@@ -17,55 +17,56 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class MainViewController extends Application {
-	
-	
-	Stage mainStage;
-	Parent root;
-	
+
+
+	static Stage mainStage;
+	static Parent root;
+
+	static Parent home;
+
 	@FXML private BorderPane bPane;
 	@FXML private AnchorPane aPane;
 	@FXML private Label msg;
 	@FXML private Label time;
 
 
-	
+
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("TimeLapse");
 		mainStage = primaryStage;
-		
+
+		home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+
 		root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 		//Typsicherheit
 		BorderPane mainPane = (BorderPane) root;
 		mainPane.setCenter(FXMLLoader.load(getClass().getResource("LoginView.fxml")));
-		
+
 		Scene s = new Scene(root);
-		
+
 		primaryStage.setScene(s);
 		primaryStage.show();
 	}
-	
-	
-	public void redraw(Stage primaryStage, Parent view) throws IOException {
-		
+
+
+	public static void redraw(Parent view) throws IOException {
+
 		//Typsicherheit
 		BorderPane mainPane = (BorderPane) root;
-		// HomeView laeuft, Login wirft Fehler.
-		mainPane.setCenter(FXMLLoader.load(getClass().getResource("HomeView.fxml")));
-		
-		
-		Scene s = new Scene(root);
-		
-		primaryStage.setScene(s);
-		primaryStage.show();
+		mainPane.setCenter(home);
+		System.out.println("Test2");
+
+		//Scene s = new Scene(root);
+		//mainStage.setScene(s);
+		//mainStage.hide();
+		mainStage.show();
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	public void loginButtonClick(ActionEvent ev) throws IOException {
-		Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-		redraw(mainStage, homeView);
-	}
+
+
 }
