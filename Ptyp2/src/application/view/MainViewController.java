@@ -22,12 +22,7 @@ public class MainViewController extends Application {
 	@FXML private AnchorPane aPane;
 	@FXML private Label msg;
 	@FXML private Label time;
-	@FXML private Button login;
-	@FXML private TextField uname;
-	@FXML private TextField pw;
-	@FXML private Label unamelabel;
-	@FXML private Label pwlabel;
-	@FXML private GridPane gPane;
+	
 
 	
 	@Override
