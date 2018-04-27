@@ -30,7 +30,7 @@
                   <TableColumn minWidth="0.0" prefWidth="138.0" text="Monat" />
               </columns>
             </TableView>
-            <Button fx:id="zurueckButton" layoutX="14.0" layoutY="418.0" mnemonicParsing="false" text="zurück" />
+            <Button fx:id="zurueckButton" layoutX="14.0" layoutY="418.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="zurück" />
          </children>
       </AnchorPane>
    </children>

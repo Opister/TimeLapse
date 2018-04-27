@@ -20,18 +20,6 @@ public class TimeInputController {
 	private VBox rootBox;
 
 	@FXML
-	private SplitPane splitMain;
-	@FXML
-	private SplitPane splitSecondary;
-
-	@FXML
-	private AnchorPane anchorOne;
-	@FXML
-	private AnchorPane anchorTwo;
-	@FXML
-	private AnchorPane anchorThree;
-
-	@FXML
 	private DatePicker datePicker;
 
 	@FXML

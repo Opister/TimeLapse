@@ -1,6 +1,11 @@
 package application.view;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -25,4 +30,8 @@ public class ViewEntriesController {
 	@FXML
 	private Button zurueckButton;
 
+	public void zurueckButtonClicked (ActionEvent ev) throws IOException{
+		Parent home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+		MainViewController.redraw(home);
+	}
 }
