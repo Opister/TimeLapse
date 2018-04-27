@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.UserManagementController">
+   <center>
+      <SplitPane dividerPositions="0.15716486902927582" orientation="VERTICAL" prefHeight="651.0" prefWidth="553.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextField fx:id="suchenTextField" layoutX="213.0" layoutY="37.0" />
+                  <Label fx:id="suchenLabel" layoutX="238.0" layoutY="62.0" text="Mitarbeiter suchen" textAlignment="CENTER" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView prefHeight="494.0" prefWidth="553.0">
+                    <columns>
+                      <TableColumn prefWidth="98.0" text="Mitarbeiter-ID" />
+                      <TableColumn fx:id="mitarbeiterTabelle" prefWidth="378.0" text="Mitarbeiter" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="zurueckButton" layoutX="14.0" layoutY="505.0" mnemonicParsing="false" text="zurück" />
+                  <ButtonBar layoutX="96.0" layoutY="498.0" prefHeight="40.0" prefWidth="453.0">
+                    <buttons>
+                      <Button fx:id="detailsButton" mnemonicParsing="false" text="Mitarbeiterdetails" />
+                        <Button fx:id="bearbeitenButton" mnemonicParsing="false" prefHeight="17.0" prefWidth="136.0" text="Mitarbeiter bearbeiten" />
+                    </buttons>
+                  </ButtonBar>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
