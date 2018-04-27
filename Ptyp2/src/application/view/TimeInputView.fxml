@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootBox" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.TimeInputController">
+<VBox fx:id="rootBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.TimeInputController">
    <children>
       <SplitPane fx:id="splitMain" dividerPositions="0.3612040133779264" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
         <items>
@@ -34,8 +34,8 @@
                         </AnchorPane>
                       <AnchorPane fx:id="anchorThree" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button fx:id="eintragenButton" layoutX="82.0" layoutY="96.0" mnemonicParsing="false" text="Zeit eintragen" />
-                              <Button fx:id="abbruchButton" layoutX="622.0" layoutY="96.0" mnemonicParsing="false" text="abbrechen" />
+                              <Button fx:id="eintragenButton" layoutX="82.0" layoutY="96.0" mnemonicParsing="false" onAction="#eintragenButtonClicked" text="Zeit eintragen" />
+                              <Button fx:id="abbruchButton" layoutX="622.0" layoutY="96.0" mnemonicParsing="false" onAction="#abbrechenButtonClicked" text="abbrechen" />
                            </children>
                         </AnchorPane>
                     </items>

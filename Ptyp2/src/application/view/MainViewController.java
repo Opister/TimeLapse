@@ -18,29 +18,28 @@ import javafx.stage.Stage;
 
 public class MainViewController extends Application {
 
-
 	static Stage mainStage;
 	static Parent root;
 
 	static Parent home;
 
-	@FXML private BorderPane bPane;
-	@FXML private AnchorPane aPane;
-	@FXML private Label msg;
-	@FXML private Label time;
-
-
+	@FXML
+	private BorderPane bPane;
+	@FXML
+	private AnchorPane aPane;
+	@FXML
+	private Label msg;
+	@FXML
+	private Label time;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("TimeLapse");
 		mainStage = primaryStage;
-
 		home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
-
 		root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
-		//Typsicherheit
+		// Typsicherheit
 		BorderPane mainPane = (BorderPane) root;
 		mainPane.setCenter(FXMLLoader.load(getClass().getResource("LoginView.fxml")));
 
@@ -50,23 +49,22 @@ public class MainViewController extends Application {
 		primaryStage.show();
 	}
 
-
 	public static void redraw(Parent view) throws IOException {
 
-		//Typsicherheit
+		// Typsicherheit
 		BorderPane mainPane = (BorderPane) root;
-		mainPane.setCenter(home);
-		System.out.println("Test2");
+		mainPane.setCenter(view);
 
-		//Scene s = new Scene(root);
-		//mainStage.setScene(s);
-		//mainStage.hide();
+		// Scene s = new Scene(root);
+
+		// mainStage.setScene(s);
+
+		// mainStage.hide();
 		mainStage.show();
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 
 }

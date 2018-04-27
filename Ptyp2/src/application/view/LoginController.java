@@ -23,7 +23,6 @@ public class LoginController {
 
 	public void loginButtonClick(ActionEvent ev) throws IOException {
 		Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-		System.out.println("Test");
 		MainViewController.redraw(homeView);
 	}
 }
