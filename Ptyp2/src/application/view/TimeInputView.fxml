@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <VBox fx:id="rootBox" prefHeight="546.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.TimeInputController">
    <children>
@@ -23,7 +24,13 @@
             <VBox prefHeight="132.0" prefWidth="222.0">
                <children>
                   <Label fx:id="kommzeitLabel" text="Kommzeit" />
-                  <TextField fx:id="kommzeitTextField" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="kommzeitHHTextField" prefHeight="26.0" prefWidth="52.0" text="hh" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" wrappingWidth="6.3798828125" />
+                        <TextField fx:id="kommzeitMMTextField" prefHeight="26.0" prefWidth="52.0" text="mm" />
+                     </children>
+                  </HBox>
                   <Label fx:id="formatKommzeitLabel" text="Stunden:Minuten" />
                </children>
             </VBox>
@@ -31,7 +38,13 @@
             <VBox prefHeight="100.0" prefWidth="228.0">
                <children>
                   <Label fx:id="gehzeitLabel" text="Gehzeit" />
-                  <TextField fx:id="gehzeitTextField" prefHeight="26.0" prefWidth="123.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="gehzeitHHTextField" prefHeight="26.0" prefWidth="52.0" text="hh" />
+                        <Label text=":" />
+                        <TextField fx:id="gehzeitMMTextField" prefHeight="26.0" prefWidth="52.0" text="mm" />
+                     </children>
+                  </HBox>
                   <Label fx:id="formatGehzeitLabel" text="Stunden:Minuten" />
                </children>
             </VBox>

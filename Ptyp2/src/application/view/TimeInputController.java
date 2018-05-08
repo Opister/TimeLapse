@@ -34,9 +34,13 @@ public class TimeInputController {
 	private Label formatGehzeitLabel;
 
 	@FXML
-	private TextField kommzeitTextField;
+	private TextField kommzeitMMTextField;
 	@FXML
-	private TextField gehzeitTextField;
+	private TextField gehzeitMMTextField;
+	@FXML
+	private TextField kommzeitHHTextField;
+	@FXML
+	private TextField gehzeitHHTextField;
 
 	@FXML
 	private Button eintragenButton;
