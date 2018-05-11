@@ -5,7 +5,7 @@ public class Login {
 	
 	public static boolean checkID(String id) {
 		try {
-			Connection con = DataBaseController.DBTest();
+			Connection con = DataBaseController.getConnection();
 			String sql = "SELECT 1 FROM time_input.employee WHERE ID = " + id;
 			
 			Statement stmt = con.createStatement();
@@ -23,7 +23,7 @@ public class Login {
 			try {
 			String sql = "SELECT * FROM time_input.employee WHERE Passwort = '"+ password +"' AND ID = " + id;
 			System.out.println(sql);
-			Connection con = DataBaseController.DBTest();
+			Connection con = DataBaseController.getConnection();
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs.next()) {
