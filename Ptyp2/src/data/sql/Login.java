@@ -10,7 +10,6 @@ public class Login {
 			
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			System.out.println(rs);
 			return rs.next();
 			
 			}catch(Exception exc) {
@@ -22,7 +21,6 @@ public class Login {
 		if(Login.checkID(id)) {
 			try {
 			String sql = "SELECT * FROM time_input.employee WHERE Passwort = '"+ password +"' AND ID = " + id;
-			System.out.println(sql);
 			Connection con = DataBaseController.getConnection();
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
