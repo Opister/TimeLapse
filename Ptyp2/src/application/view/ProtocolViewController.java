@@ -20,6 +20,9 @@ public class ProtocolViewController {
 		Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 		MainViewController.redraw(homeView);
 	}
-	
-	
+	public void updateTextArea(String text){
+		protocolTextArea.setText(text);
+	}
+
+
 }
