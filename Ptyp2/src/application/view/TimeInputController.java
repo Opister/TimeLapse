@@ -123,9 +123,7 @@ public class TimeInputController {
 					&& Integer.parseInt(gehzeitMMTextField.getText()) >= 0
 					&& Integer.parseInt(gehzeitHHTextField.getText()) >= 0
 					&& Integer.parseInt(gehzeitHHTextField.getText()) < 24) {
-				
-				
-				
+
 				gehZeit = gehzeitHHTextField.getText().concat(":" + gehzeitMMTextField.getText());
 				System.out.println(gehZeit);
 			} else {
