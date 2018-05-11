@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.Pane;
 
 public class HomeViewController {
 	@FXML
@@ -33,7 +35,6 @@ public class HomeViewController {
 	@FXML
 	private Button abrechnungButton;
 
-
 	@SuppressWarnings("unused")
 	public void timeInuputButtonClicked(ActionEvent ev) throws IOException {
 		Parent tInView = FXMLLoader.load(getClass().getResource("TimeInputView.fxml"));
@@ -43,7 +44,7 @@ public class HomeViewController {
 		 */
 	}
 
-	public void logoutButtonClicked(ActionEvent ev) throws IOException{
+	public void logoutButtonClicked(ActionEvent ev) throws IOException {
 		Parent login = FXMLLoader.load(getClass().getResource("LoginView.fxml"));
 		MainViewController.redraw(login);
 		/**
@@ -51,7 +52,7 @@ public class HomeViewController {
 		 */
 	}
 
-	public void eintraegeSehenButtonClicked(ActionEvent ev) throws IOException{
+	public void eintraegeSehenButtonClicked(ActionEvent ev) throws IOException {
 		Parent entries = FXMLLoader.load(getClass().getResource("ViewEntriesView.fxml"));
 		MainViewController.redraw(entries);
 		/**
@@ -59,11 +60,69 @@ public class HomeViewController {
 		 */
 	}
 
-	public void ProtokollButtonClicked(ActionEvent ev) throws IOException{
+	public void ProtokollButtonClicked(ActionEvent ev) throws IOException {
 
-		/**
-		 * TODO Alles ausser fxml Verknuepfung
-		 */
+
+		Parent protocol = FXMLLoader.load(getClass().getResource("ProtocolView.fxml"));
+		MainViewController.redraw(protocol);
+
+		TextArea t = (TextArea) protocol.getChildrenUnmodifiable().get(0);
+
+		t.setText("Bastard Code\n t \n t "
+				+ "\n t "
+				+ "\n t \n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t \n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t "
+				+ "\n t ");
+		//t.setDisable(true);
 	}
 
 	public void mitarbeiterBearButtonClicked(ActionEvent ev) throws IOException {
@@ -72,12 +131,12 @@ public class HomeViewController {
 		 */
 	}
 
-	public void zeitenBearButtonClicked(ActionEvent ev) throws IOException{
+	public void zeitenBearButtonClicked(ActionEvent ev) throws IOException {
 		// TODO
 	}
 
-	public void abrechnungErstellenButtonClicked(ActionEvent ev) throws IOException{
-		//TODO
+	public void abrechnungErstellenButtonClicked(ActionEvent ev) throws IOException {
+		// TODO
 	}
 
 }

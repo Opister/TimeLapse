@@ -99,9 +99,13 @@ public class TimeInputController {
 		String chosenDate;
 		String gehZeit;
 		// eingetragenes Datum
-		chosenDate = formatter.format(datePicker.getValue());
-		System.out.println(chosenDate);
 		try {
+			chosenDate = formatter.format(datePicker.getValue());
+			if (chosenDate != null) {
+				System.out.println(chosenDate);
+			} else {
+				throw new NullPointerException();
+			}
 			// Kommzeit
 			if (Integer.parseInt(kommzeitMMTextField.getText()) < 60
 					&& Integer.parseInt(kommzeitMMTextField.getText()) >= 0
@@ -119,6 +123,8 @@ public class TimeInputController {
 					&& Integer.parseInt(gehzeitMMTextField.getText()) >= 0
 					&& Integer.parseInt(gehzeitHHTextField.getText()) >= 0
 					&& Integer.parseInt(gehzeitHHTextField.getText()) < 24) {
+
+
 				gehZeit = gehzeitHHTextField.getText().concat(":" + gehzeitMMTextField.getText());
 				System.out.println(gehZeit);
 			} else {
@@ -130,16 +136,16 @@ public class TimeInputController {
 			// zurueck zu Home
 			Parent home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 			MainViewController.redraw(home);
-			/*
-			 * TODO: eingegebene Daten auf falscheingaben ueberpruefen
-			 */
 
-		} catch (Exception ex) {
-			if (ex instanceof BadTimeException || ex instanceof NumberFormatException) {
-				errorDisplay.setText("Zeiteingabe ueberpruefen");
-			}
-			//ex.printStackTrace();
+		} catch (BadTimeException ex) {
+			errorDisplay.setText("Zeiteingabe ueberpruefen");
+			// ex.printStackTrace();
+		} catch (NullPointerException e) {
+			errorDisplay.setText("Datum waehlen");
+		} catch (NumberFormatException e) {
+			errorDisplay.setText("Zeiteingabe ueberpruefen!");
 		}
+
 	}
 
 }
