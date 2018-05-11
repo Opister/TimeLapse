@@ -64,9 +64,9 @@ public class MainViewController extends Application {
 	}
 
 	public static void main(String[] args) {
-		DataBaseController.DBTest();
-		//launch(args);
-		
+		//DataBaseController.DBTest();
+		launch(args);
+
 	}
 
 }

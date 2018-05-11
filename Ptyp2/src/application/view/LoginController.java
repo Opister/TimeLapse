@@ -2,6 +2,7 @@ package application.view;
 
 import java.io.IOException;
 
+import data.sql.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,9 +27,16 @@ public class LoginController {
 	private GridPane gPane;
 
 	public void loginButtonClick(ActionEvent ev) throws IOException {
-		if (uname.getCharacters().toString().equals("user")) {
-			Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-			MainViewController.redraw(homeView);
+		String name = uname.getCharacters().toString();
+		String password = pw.getCharacters().toString();
+
+		if (true) {
+			if (true) {
+				String currentUser = name;
+				Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+				MainViewController.redraw(homeView);
+			}
+
 		}
 	}
 }

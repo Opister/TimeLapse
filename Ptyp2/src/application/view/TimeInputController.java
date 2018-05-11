@@ -1,16 +1,18 @@
 package application.view;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import exceptions.BadTimeException;
+import exceptions.TimeInvalidException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -19,6 +21,12 @@ import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import protokoll.Protokoll;
 
+/**
+ * Controls time inputs
+ *
+ * @author himotaas
+ *
+ */
 public class TimeInputController {
 
 	private Protokoll protokoll;
@@ -26,6 +34,7 @@ public class TimeInputController {
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 	private LocalDateTime now = LocalDateTime.now();
+
 
 	@FXML
 	private VBox rootBox;
@@ -98,19 +107,21 @@ public class TimeInputController {
 		String kommZeit;
 		String chosenDate;
 		String gehZeit;
+
 		// eingetragenes Datum
 		try {
 			chosenDate = formatter.format(datePicker.getValue());
+
 			if (chosenDate != null) {
 				System.out.println(chosenDate);
 			} else {
 				throw new NullPointerException();
 			}
+
 			// Kommzeit
-			if (Integer.parseInt(kommzeitMMTextField.getText()) < 60
-					&& Integer.parseInt(kommzeitMMTextField.getText()) >= 0
-					&& Integer.parseInt(kommzeitHHTextField.getText()) >= 0
-					&& Integer.parseInt(kommzeitHHTextField.getText()) < 24) {
+
+			if (isCorrectTimeInput()) {
+
 				kommZeit = kommzeitHHTextField.getText().concat(":" + kommzeitMMTextField.getText());
 				System.out.println(kommZeit);
 
@@ -119,33 +130,80 @@ public class TimeInputController {
 			}
 
 			// Gehzeit
-			if (Integer.parseInt(gehzeitMMTextField.getText()) < 60
-					&& Integer.parseInt(gehzeitMMTextField.getText()) >= 0
-					&& Integer.parseInt(gehzeitHHTextField.getText()) >= 0
-					&& Integer.parseInt(gehzeitHHTextField.getText()) < 24) {
-
+			if (isCorrectTimeInput() && gehzeitIstNachKommzeit()) {
 
 				gehZeit = gehzeitHHTextField.getText().concat(":" + gehzeitMMTextField.getText());
 				System.out.println(gehZeit);
+
+			} else if (!gehzeitIstNachKommzeit()) {
+
+				gehzeitHHTextField.clear();
+				gehzeitMMTextField.clear();
+
+
+				throw new TimeInvalidException();
 			} else {
+
 				throw new BadTimeException();
+
 			}
 			// write data
-			protokoll.writeEntry(chosenDate, dtf.format(now), kommZeit, gehZeit, "Frank");
+
+			if (protokoll.writeEntry(chosenDate, dtf.format(now), kommZeit, gehZeit, "Frank")) {
+
+				errorDisplay.setText("Eintrag erfolgreich!");
+
+			}
 
 			// zurueck zu Home
 			Parent home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 			MainViewController.redraw(home);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Erfolg!");
+			alert.setHeaderText("Eintrag wurde erstellt.");
+			alert.setContentText("wählen sie 'Protokoll' um ihre Einträge einzusehen");
+			alert.showAndWait();
+
 
 		} catch (BadTimeException ex) {
 			errorDisplay.setText("Zeiteingabe ueberpruefen");
+
 			// ex.printStackTrace();
 		} catch (NullPointerException e) {
 			errorDisplay.setText("Datum waehlen");
 		} catch (NumberFormatException e) {
 			errorDisplay.setText("Zeiteingabe ueberpruefen!");
+		} catch (TimeInvalidException e) {
+			errorDisplay.setText("Gehzeit muss nach Kommzeit liegen");
 		}
 
 	}
 
+	public boolean isCorrectTimeInput() {
+		if (Integer.parseInt(gehzeitMMTextField.getText()) < 60 && Integer.parseInt(gehzeitMMTextField.getText()) >= 0
+				&& Integer.parseInt(gehzeitHHTextField.getText()) >= 0
+				&& Integer.parseInt(gehzeitHHTextField.getText()) < 24)
+			return true;
+		else
+			return false;
+
+	}
+
+	public boolean gehzeitIstNachKommzeit() {
+		int gehMinutenInput = Integer.parseInt(gehzeitMMTextField.getText());
+		int gehStundenInput = Integer.parseInt(gehzeitHHTextField.getText());
+
+		int kommMinutenInput = Integer.parseInt(kommzeitMMTextField.getText());
+		int kommStundenInput = Integer.parseInt(kommzeitHHTextField.getText());
+
+		if ((gehStundenInput == kommStundenInput) && (gehMinutenInput < kommMinutenInput)) {
+			return false;
+		} else if (gehStundenInput < kommStundenInput) {
+			return false;
+		} else if ((gehStundenInput == kommStundenInput) && (gehMinutenInput == kommMinutenInput)) {
+			return false;
+		} else
+			return true;
+
+	}
 }
