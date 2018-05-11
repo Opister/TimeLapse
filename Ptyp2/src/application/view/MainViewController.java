@@ -2,6 +2,7 @@ package application.view;
 
 import java.io.IOException;
 
+import data.sql.DataBaseController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,7 +64,9 @@ public class MainViewController extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+		DataBaseController.DBTest();
+		//launch(args);
+		
 	}
 
 }
