@@ -22,7 +22,7 @@ public class Protokoll {
 	 * erstellt ein Textfile an belibiger location
 	 *
 	 * @param location
-	 *            - gewünschter Pfad
+	 *            - gew�nschter Pfad
 	 */
 	public Protokoll(String location) {
 		this.fileLocation = location;
@@ -66,7 +66,7 @@ public class Protokoll {
 	 *            - Benutzer der änderungen durchführte
 	 * @throws FileNotFoundException
 	 *
-	 *             TODO : einträge für verschiedene Mitarbeiter(Wer hat zeit
+	 *             TODO : eintr�ge f�r verschiedene Mitarbeiter(Wer hat zeit
 	 *             eingetragen, Mitarbeiter soll spaeter nur eigene zeit sehen
 	 */
 	public boolean writeEntry(String dateInput, String aktuellesDatum, String kommzeit, String gehzeit, String username)
@@ -78,11 +78,11 @@ public class Protokoll {
 		String user = username;
 
 		try {
-			//wenn file leer -> überschriften einfügen
+			//wenn file leer -> ueerschriften einfuegen
 			if (protokollTxt.length() == 0) {
 				createProtokollHeader();
 			}
-			//schreiben der Einträge
+			//schreiben der Eintraege
 			File protokollVorherTxt = protokollTxt;
 
 			writer.write(String.format(formatStr, akutell, kommZeit, gehZeit, user));
@@ -131,7 +131,7 @@ public class Protokoll {
 	}
 
 	/**
-	 * Fügt überschriften der Kategorien ein
+	 * F�gt �berschriften der Kategorien ein
 	 *
 	 * @throws IOException
 	 */

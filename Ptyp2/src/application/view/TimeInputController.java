@@ -30,7 +30,7 @@ import protokoll.Protokoll;
 public class TimeInputController {
 
 	private Protokoll protokoll;
-	private String pickedDate;
+	
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 	private LocalDateTime now = LocalDateTime.now();
@@ -161,7 +161,7 @@ public class TimeInputController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Erfolg!");
 			alert.setHeaderText("Eintrag wurde erstellt.");
-			alert.setContentText("wählen sie 'Protokoll' um ihre Einträge einzusehen");
+			alert.setContentText("waehlen sie 'Protokoll' um ihre Eintraege einzusehen");
 			alert.showAndWait();
 
 

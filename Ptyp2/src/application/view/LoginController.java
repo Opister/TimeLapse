@@ -2,7 +2,6 @@ package application.view;
 
 import java.io.IOException;
 
-import data.sql.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
