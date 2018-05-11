@@ -97,7 +97,12 @@ public class Protokoll {
 				}
 		}
 	}
-
+/**
+ * liest die protokolle eines Users und gibt diese zurück
+ * @param username
+ * @return eine Liste aller Protokolle, die zum username gehören
+ * @throws FileNotFoundException
+ */
 	public ArrayList<String> readEnrty(String username) throws FileNotFoundException {
 
 		String user = username;
