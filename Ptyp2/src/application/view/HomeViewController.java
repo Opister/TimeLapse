@@ -60,10 +60,10 @@ public class HomeViewController {
 	}
 
 	public void ProtokollButtonClicked(ActionEvent ev) throws IOException{
+		Parent protocol = FXMLLoader.load(getClass().getResource("Protocol.fxml"));
+		MainViewController.redraw(protocol);
+		//TODO: Fill in aufrufen
 
-		/**
-		 * TODO Alles ausser fxml Verknuepfung
-		 */
 	}
 
 	public void mitarbeiterBearButtonClicked(ActionEvent ev) throws IOException {

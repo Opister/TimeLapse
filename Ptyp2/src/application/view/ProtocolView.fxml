@@ -10,6 +10,6 @@
    <children>
       <TextArea fx:id="protocolTextArea" prefHeight="360.0" prefWidth="600.0" />
       <Separator prefHeight="13.0" prefWidth="600.0" />
-      <Button fx:id="backButton" mnemonicParsing="false" text="zurueck" />
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClicked" text="zurueck" />
    </children>
 </VBox>
