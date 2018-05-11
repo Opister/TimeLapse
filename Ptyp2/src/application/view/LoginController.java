@@ -12,17 +12,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 public class LoginController {
-	@FXML private Button login;
-	@FXML private TextField uname;
-	@FXML private TextField pw;
-	@FXML private Label unamelabel;
-	@FXML private Label pwlabel;
-	@FXML private GridPane gPane;
-
-
+	@FXML
+	private Button login;
+	@FXML
+	private TextField uname;
+	@FXML
+	private TextField pw;
+	@FXML
+	private Label unamelabel;
+	@FXML
+	private Label pwlabel;
+	@FXML
+	private GridPane gPane;
 
 	public void loginButtonClick(ActionEvent ev) throws IOException {
-		Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-		MainViewController.redraw(homeView);
+		if (uname.getCharacters().toString().equals("user")) {
+			Parent homeView = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+			MainViewController.redraw(homeView);
+		}
 	}
 }

@@ -1,12 +1,12 @@
 package application.view;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
+import exceptions.BadTimeException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +43,9 @@ public class TimeInputController {
 	private Label formatKommzeitLabel;
 	@FXML
 	private Label formatGehzeitLabel;
+
+	@FXML
+	private Label errorDisplay;
 
 	@FXML
 	private TextField kommzeitMMTextField;
@@ -91,28 +94,52 @@ public class TimeInputController {
 			}
 
 		});
+
+		String kommZeit;
+		String chosenDate;
+		String gehZeit;
 		// eingetragenes Datum
-		String chosenDate = formatter.format(datePicker.getValue());
+		chosenDate = formatter.format(datePicker.getValue());
 		System.out.println(chosenDate);
+		try {
+			// Kommzeit
+			if (Integer.parseInt(kommzeitMMTextField.getText()) < 60
+					&& Integer.parseInt(kommzeitMMTextField.getText()) >= 0
+					&& Integer.parseInt(kommzeitHHTextField.getText()) >= 0
+					&& Integer.parseInt(kommzeitHHTextField.getText()) < 24) {
+				kommZeit = kommzeitHHTextField.getText().concat(":" + kommzeitMMTextField.getText());
+				System.out.println(kommZeit);
 
-		// Kommzeit
-		String kommZeit = kommzeitHHTextField.getText().concat(":" + kommzeitMMTextField.getText());
-		System.out.println(kommZeit);
+			} else {
+				throw new BadTimeException();
+			}
 
-		// Gehzeit
-		String gehZeit = gehzeitHHTextField.getText().concat(":" + gehzeitMMTextField.getText());
-		System.out.println(gehZeit);
+			// Gehzeit
+			if (Integer.parseInt(gehzeitMMTextField.getText()) < 60
+					&& Integer.parseInt(gehzeitMMTextField.getText()) >= 0
+					&& Integer.parseInt(gehzeitHHTextField.getText()) >= 0
+					&& Integer.parseInt(gehzeitHHTextField.getText()) < 24) {
+				gehZeit = gehzeitHHTextField.getText().concat(":" + gehzeitMMTextField.getText());
+				System.out.println(gehZeit);
+			} else {
+				throw new BadTimeException();
+			}
+			// write data
+			protokoll.writeEntry(chosenDate, dtf.format(now), kommZeit, gehZeit, "Frank");
 
-		// write data
-		protokoll.writeEntry(chosenDate, dtf.format(now), kommZeit, gehZeit, "Frank");
+			// zurueck zu Home
+			Parent home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+			MainViewController.redraw(home);
+			/*
+			 * TODO: eingegebene Daten auf falscheingaben ueberpruefen
+			 */
 
-		// zurück zu Home
-		Parent home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-		MainViewController.redraw(home);
-		/*
-		 * TODO: eingegebene Daten auf falscheingaben überprüfen
-		 */
-
+		} catch (Exception ex) {
+			if (ex instanceof BadTimeException || ex instanceof NumberFormatException) {
+				errorDisplay.setText("Zeiteingabe ueberpruefen");
+			}
+			//ex.printStackTrace();
+		}
 	}
 
 }
