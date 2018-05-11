@@ -145,6 +145,7 @@ public class TimeInputController {
 		} catch (NumberFormatException e) {
 			errorDisplay.setText("Zeiteingabe ueberpruefen!");
 		}
+
 	}
 
 }
