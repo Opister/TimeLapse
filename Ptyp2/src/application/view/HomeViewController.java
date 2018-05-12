@@ -1,6 +1,8 @@
 package application.view;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,61 +69,20 @@ public class HomeViewController {
 		MainViewController.redraw(protocol);
 
 		TextArea t = (TextArea) protocol.getChildrenUnmodifiable().get(0);
-		Protokoll.testProtokoll();
-		t.setText("Bastard Code\n t \n t "
-				+ "\n t "
-				+ "\n t \n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t \n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t "
-				+ "\n t ");
+		
+		// Auslesen der Protokolle
+		String formatStr = "%-20s %-15s %-15s %-15s%n";
+		Protokoll p = new Protokoll("Log/protokoll.txt");
+		t.setText(String.format(formatStr, "Geaendert am: ", "Kommzeit:", "GehZeit:", "Geaendert von: "));
+		try {
+			ArrayList<String> entries = p.readEnrty("John");
+			for (String entry : entries) {
+				t.insertText(t.getLength(), entry+"\n");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		//t.setDisable(true);
 	}
 

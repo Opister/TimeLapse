@@ -22,7 +22,7 @@ public class Protokoll {
 	 * erstellt ein Textfile an belibiger location
 	 *
 	 * @param location
-	 *            - gewünschter Pfad
+	 *            - gewï¿½nschter Pfad
 	 */
 	public Protokoll(String location) {
 		this.fileLocation = location;
@@ -43,7 +43,7 @@ public class Protokoll {
 	public Protokoll() {
 		protokollTxt = new File("Log/protokoll.txt");
 		try {
-			writer = new FileWriter(protokollTxt);
+			writer = new FileWriter(protokollTxt,true);
 			// writer = new BufferedWriter(new FileWriter(protokollTxt, true));
 			reader = new BufferedReader(new FileReader(protokollTxt));
 		} catch (IOException e) {
@@ -66,7 +66,7 @@ public class Protokoll {
 	 *            - Benutzer der Ã¤nderungen durchfÃ¼hrte
 	 * @throws FileNotFoundException
 	 *
-	 *             TODO : einträge für verschiedene Mitarbeiter(Wer hat zeit
+	 *             TODO : eintrï¿½ge fï¿½r verschiedene Mitarbeiter(Wer hat zeit
 	 *             eingetragen, Mitarbeiter soll spaeter nur eigene zeit sehen
 	 */
 	public boolean writeEntry(String dateInput, String aktuellesDatum, String kommzeit, String gehzeit, String username)
@@ -131,7 +131,7 @@ public class Protokoll {
 	}
 
 	/**
-	 * Fügt Überschriften der Kategorien ein
+	 * Fï¿½gt ï¿½berschriften der Kategorien ein
 	 *
 	 * @throws IOException
 	 */
@@ -140,15 +140,5 @@ public class Protokoll {
 		writer.write(String.format(formatStr, "Geï¿½ndert am: ", "Kommzeit:", "GehZeit:", "Geï¿½ndert von: "));
 	}
 
-	public static void testProtokoll() {
-		Protokoll p = new Protokoll("Log/protokoll.txt");
-		try {
-			ArrayList<String> entries = p.readEnrty("Frank");
-			for (String entry : entries) {
-				System.out.println(entry);
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+
 }
