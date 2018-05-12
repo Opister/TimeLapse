@@ -10,6 +10,7 @@ import exceptions.TimeInvalidException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -147,6 +148,13 @@ public class TimeInputController {
 				throw new BadTimeException();
 
 			}
+			//Bestätigungsdialog
+			Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+			confirmationAlert.setTitle("Eintrag bestätigen");
+			confirmationAlert.setHeaderText("Bitte bestätigen sie den Eintrag: ");
+			confirmationAlert.setContentText(String.format(Protokoll.formatStr, chosenDate, kommZeit +" "  , gehZeit , "Frank" ));
+			confirmationAlert.showAndWait();
+			
 			// write data
 
 			if (protokoll.writeEntry(chosenDate, dtf.format(now), kommZeit, gehZeit, "Frank")) {
@@ -167,10 +175,11 @@ public class TimeInputController {
 
 		} catch (BadTimeException ex) {
 			errorDisplay.setText("Zeiteingabe ueberpruefen");
-
+			errorDisplay.setAlignment(Pos.CENTER);
 			// ex.printStackTrace();
 		} catch (NullPointerException e) {
 			errorDisplay.setText("Datum waehlen");
+		
 		} catch (NumberFormatException e) {
 			errorDisplay.setText("Zeiteingabe ueberpruefen!");
 		} catch (TimeInvalidException e) {

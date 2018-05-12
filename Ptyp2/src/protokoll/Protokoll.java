@@ -16,7 +16,7 @@ public class Protokoll {
 	private BufferedReader reader;
 	private String fileLocation;
 	private File protokollTxt;
-	private final String formatStr = "%-20s %-15s %-15s %-15s%n";
+	public static final String formatStr = "%-20s %-15s %-15s %-15s%n";
 
 	/**
 	 * erstellt ein Textfile an belibiger location

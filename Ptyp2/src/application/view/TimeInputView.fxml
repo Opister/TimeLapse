@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -10,12 +11,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="rootBox" prefHeight="546.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.TimeInputController">
+<VBox fx:id="rootBox" prefHeight="546.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.TimeInputController">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <DatePicker fx:id="datePicker" prefHeight="102.0" prefWidth="192.0" />
-            <Label prefHeight="17.0" prefWidth="99.0" text="Datum auswählen" textAlignment="CENTER" />
+            <DatePicker fx:id="datePicker" prefHeight="22.0" prefWidth="192.0">
+               <VBox.margin>
+                  <Insets top="-60.0" />
+               </VBox.margin></DatePicker>
+            <Label prefHeight="17.0" prefWidth="99.0" text="Datum auswählen" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="-60.0" />
+               </VBox.margin></Label>
          </children>
       </VBox>
       <Separator prefHeight="28.0" prefWidth="821.0" />
@@ -34,6 +41,9 @@
                   </HBox>
                   <Label fx:id="formatKommzeitLabel" text="Stunden:Minuten" />
                </children>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="350.0">
                <children>
@@ -61,8 +71,14 @@
       <Separator prefHeight="35.0" prefWidth="821.0" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="eintragenButton" mnemonicParsing="false" onAction="#eintragenButtonClicked" text="Zeit eintragen" />
-            <Button fx:id="abbruchButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#abbrechenButtonClicked" text="abbrechen" />
+            <Button fx:id="eintragenButton" mnemonicParsing="false" onAction="#eintragenButtonClicked" text="Zeit eintragen">
+               <HBox.margin>
+                  <Insets left="50.0" top="100.0" />
+               </HBox.margin></Button>
+            <Button fx:id="abbruchButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#abbrechenButtonClicked" text="abbrechen">
+               <HBox.margin>
+                  <Insets left="530.0" top="100.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </children>
