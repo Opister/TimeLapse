@@ -110,8 +110,9 @@ public class Protokoll {
  * @param username
  * @return eine Liste aller Protokolle, die zum username gehï¿½ren
  * @throws FileNotFoundException
+ * @author Hasan
  */
-	public ArrayList<String> readEnrty(String username) throws FileNotFoundException {
+	public ArrayList<String> readEnrtyForUser(String username) throws FileNotFoundException {
 
 		String user = username;
 		ArrayList<String> protokoll = new ArrayList<>();
@@ -130,14 +131,34 @@ public class Protokoll {
 		return protokoll;
 	}
 
+	public ArrayList<String> readEnrtyForAll() throws FileNotFoundException {
+
+		ArrayList<String> protokoll = new ArrayList<>();
+		try {
+			for (int i = 0; i < protokollTxt.length(); i++) {
+				String entry = reader.readLine();
+				if (!(entry.length() == 0)) {
+					protokoll.add(entry);
+				}
+			}
+			reader.close();
+		} catch (Exception e) {
+
+		}
+
+		return protokoll;
+	}
+
+
 	/**
 	 * Fï¿½gt ï¿½berschriften der Kategorien ein
 	 *
 	 * @throws IOException
+	 * @author Timo
 	 */
 	private void createProtokollHeader() throws IOException {
 
-		writer.write(String.format(formatStr, "Geï¿½ndert am: ", "Kommzeit:", "GehZeit:", "Geï¿½ndert von: "));
+		writer.write(String.format(formatStr, "Geï¿½ndert am: ", "Kommzeit:", "GehZeit:", "Geändert von: "));
 	}
 
 

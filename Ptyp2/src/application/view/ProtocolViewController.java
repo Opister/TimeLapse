@@ -1,6 +1,7 @@
 package application.view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class ProtocolViewController {
+	private ArrayList<String> entrys;
 	@FXML
 	public TextArea protocolTextArea;
 
@@ -21,6 +23,8 @@ public class ProtocolViewController {
 		MainViewController.redraw(homeView);
 	}
 	public void updateTextArea(String text){
+		
+
 		protocolTextArea.setText(text);
 	}
 

@@ -75,7 +75,7 @@ public class HomeViewController {
 		Protokoll p = new Protokoll("Log/protokoll.txt");
 		t.setText(String.format(formatStr, "Geaendert am: ", "Kommzeit:", "GehZeit:", "Geaendert von: "));
 		try {
-			ArrayList<String> entries = p.readEnrty("John");
+			ArrayList<String> entries = p.readEnrtyForUser("John");
 			for (String entry : entries) {
 				t.insertText(t.getLength(), entry+"\n");
 			}

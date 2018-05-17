@@ -30,7 +30,7 @@ import protokoll.Protokoll;
  */
 public class TimeInputController {
 
-	private Protokoll protokoll;
+	public static Protokoll protokoll;
 	
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -148,12 +148,18 @@ public class TimeInputController {
 				throw new BadTimeException();
 
 			}
+			
+			
+			
 			//Bestätigungsdialog
 			Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
 			confirmationAlert.setTitle("Eintrag bestätigen");
 			confirmationAlert.setHeaderText("Bitte bestätigen sie den Eintrag: ");
 			confirmationAlert.setContentText(String.format(Protokoll.formatStr, chosenDate, kommZeit +" "  , gehZeit , "Frank" ));
 			confirmationAlert.showAndWait();
+			
+			
+			
 			
 			// write data
 
@@ -166,6 +172,8 @@ public class TimeInputController {
 			// zurueck zu Home
 			Parent home = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 			MainViewController.redraw(home);
+			
+			//eintrag erstellt alert
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Erfolg!");
 			alert.setHeaderText("Eintrag wurde erstellt.");
